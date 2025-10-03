@@ -1,5 +1,5 @@
-// src/components/InstallPWAButton.jsx
 import { useState, useEffect } from 'react';
+
 
 export default function InstallPWAButton() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -12,10 +12,22 @@ export default function InstallPWAButton() {
       setIsVisible(true);
     };
 
+    const checkIfInstalled = () => {
+      // Check if the app is running in standalone mode
+      const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+      if (isStandalone) {
+        setIsVisible(false);
+      }
+    };
+
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', () => setIsVisible(false));
+
+    checkIfInstalled();
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', () => setIsVisible(false));
     };
   }, []);
 
@@ -34,23 +46,7 @@ export default function InstallPWAButton() {
   };
 
   return isVisible ? (
-    <button
-      onClick={handleInstallClick}
-      style={{
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        padding: '12px 20px',
-        backgroundColor: '#3b82f6',
-        color: 'white',
-        border: 'none',
-        borderRadius: '50px',
-        fontSize: '16px',
-        cursor: 'pointer',
-        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-        zIndex: 1000,
-      }}
-    >
+    <button onClick={handleInstallClick} style={styles}>
       Install App
     </button>
   ) : null;
