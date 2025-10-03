@@ -1,6 +1,6 @@
 // src/App.jsx
 import { Route, Routes, Navigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useEffect, useState, useRef } from "react";
 import { useAdmin } from "./context/AdminContext";
@@ -16,9 +16,10 @@ import Login from "./pages/Login";
 import AddSurvey from "./pages/AddSurvey";
 import SurveyManager from "./pages/SurveyManager";
 import AdminLogin from "./pages/AdminLogin";
+import InstallPWAButton from './components/InstallPWAButton';
 import { startWithdrawalToasts, stopWithdrawalToasts } from "./lib/withdrawalToast";
 
-/* --- tiny guard so some routes require a signed-in user --- */
+/* --- Tiny guard so some routes require a signed-in user --- */
 function isSignedIn() {
   try {
     const u = JSON.parse(localStorage.getItem("app:user") || "null");
@@ -158,6 +159,8 @@ function App() {
         </Routes>
       </main>
       <Footer />
+      {/* Floating Install PWA Button */}
+      <InstallPWAButton />
       {/* Global toast container (top-right) */}
       <ToastContainer position="top-right" autoClose={4500} hideProgressBar />
     </div>
