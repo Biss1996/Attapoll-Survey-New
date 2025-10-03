@@ -420,9 +420,9 @@ export default function Dashboard() {
 
       {/* Bottom grid: Transactions + Chart */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
-        {/* Transactions History */}
+        {/* Survey History */}
         <div className="bg-white rounded-xl shadow-md p-4 sm:p-6 lg:col-span-2">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Transactions History</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Survey History</h2>
           {transactions.length === 0 ? (
             <p className="text-gray-500">No transactions yet.</p>
           ) : (

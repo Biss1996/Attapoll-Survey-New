@@ -48,7 +48,7 @@ export function startWithdrawalToasts() {
     clearInterval(toastInterval);
   }
   pushRandomWithdrawalToast();
-  toastInterval = setInterval(pushRandomWithdrawalToast, 45000); // 45 seconds
+  toastInterval = setInterval(pushRandomWithdrawalToast, 55000); // 45 seconds
 }
 
 export function stopWithdrawalToasts() {

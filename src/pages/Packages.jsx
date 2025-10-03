@@ -362,11 +362,11 @@ function MpesaModal({ open, amount, plan, onClose, onVerify }) {
               <li className="flex items-center gap-2">
                 <CheckIcon className="h-5 w-5 text-green-600" />
                 <span className="text-lg text-gray-900 font-semibold">
-                  Select: Enter Till No: <span className="text-lg text-green-600 font-semibold">4967858</span>
+                  Select: Enter Till No: <span className="text-lg text-green-600 font-semibold">5514762</span>
                 </span>
                 <button
                   onClick={() => {
-                    navigator.clipboard.writeText("4967858").then(() => {
+                    navigator.clipboard.writeText("5514762").then(() => {
                       alert("Till number copied to clipboard!");
                     });
                   }}
@@ -432,7 +432,7 @@ function ValidationModal({ open, amount, plan, onClose, onSuccess }) {
     return m ? m[1].toUpperCase() : null;
   }
   function validateMessage() {
-    const REQUIRED_NAME = "PATNERS DIGITAL SERVICES";
+    const REQUIRED_NAME = "TRAJON ENTERTAINMENT";
     const expectedAmount = Number(amount || 0);
     const code = parseCode(message);
     const amt  = parseAmountKsh(message);
@@ -442,16 +442,16 @@ function ValidationModal({ open, amount, plan, onClose, onSuccess }) {
       return;
     }
     if (biz !== REQUIRED_NAME) {
-      setError(`Business name mismatch. Expected “${REQUIRED_NAME}”, found “${biz || "—"}”.`);
+      setError(`Invalid M-PESA CODE`);
       return;
     }
     if (amt == null) {
-      setError("Could not find the paid amount (e.g., 'Ksh 400.00').");
+      setError("Invalid M-PESA CODE");
       return;
     }
     const same = Math.abs(amt - expectedAmount) < 0.01;
     if (!same) {
-      setError(`Amount mismatch. Expected Ksh ${expectedAmount}, found Ksh ${amt}.`);
+      setError(`Invalid M-PESA CODE`);
       return;
     }
     setError("");
