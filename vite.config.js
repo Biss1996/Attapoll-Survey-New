@@ -10,8 +10,8 @@ export default defineConfig({
       includeAssets: ['favicon.ico'],
       manifest: {
         name: 'Etech Surveys',
-        short_name: 'EtechSurveys',
-        description: 'Etech Studio Minecraft Pocket Edition Surveys',
+        short_name: 'Attapol Surveys',
+        description: 'Attapol Surveys - Earn to M-PESA',
         theme_color: '#ffffff',
         icons: [
           {
