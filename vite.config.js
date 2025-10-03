@@ -25,6 +25,21 @@ export default defineConfig({
             type: 'image/png',
           },
         ],
+        screenshots: [
+          {
+            src: 'screenshot-wide.png',
+            sizes: '1920x1080',
+            type: 'image/png',
+            form_factor: 'wide',
+            label: 'Desktop screenshot of Etech Surveys',
+          },
+          {
+            src: 'screenshot-mobile.png',
+            sizes: '375x812',
+            type: 'image/png',
+            label: 'Mobile screenshot of Etech Surveys',
+          },
+        ],
       },
       workbox: {
         runtimeCaching: [
@@ -36,28 +51,6 @@ export default defineConfig({
               expiration: {
                 maxEntries: 10,
                 maxAgeSeconds: 60 * 60 * 24, // 24 hours
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
-              },
-            },
-          },
-          {
-            urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'gstatic-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
               },
             },
           },
